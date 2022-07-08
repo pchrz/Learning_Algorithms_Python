@@ -28,6 +28,8 @@ def smallest(A):
 ### Range basically gives us a sequence of numbers increasing by 1
 ### and we use that range as the List index, and compare each element in the list
 ### against our my_max value.
+##### Largest will still throw error if list is empty.
+##### How many times do we use the key operation "<" ? N-1
 
 def largest(A):
     my_max = A[0]
@@ -36,5 +38,23 @@ def largest(A):
             my_max = A[idx]
     return my_max
 
+### Alternate algorithm has two loops, and when properly sorted it can find the result very quickly. 
+### If the conditions of the input are not perfect then the result will be very slow and burdensome. 
+
+def alternate(A):
+    for v in A:
+        v_is_largest = True
+        # print(v)
+        for x in A:
+           # print(x)
+            if v < x:
+                v_is_largest = False
+                break
+        if v_is_largest:
+            return v
+    return None
+
+
 print(smallest(my_list))
 print(largest(my_list))
+print(alternate(my_list))
