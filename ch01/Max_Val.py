@@ -54,6 +54,36 @@ def alternate(A):
             return v
     return None
 
+### Few more algorithms to solve this problem.
+
+### This is amazingly compact, uses power of sorting and tuples to quickly pluck out the two largest.
+def sorting_two(A):
+    return tuple(sorted(A, reverse=True) [:2])/
+
+### This method uses max() to get the largest value, then it makes a copy of the list
+### and then removes the previous largest value from the 2nd list. 
+### We return the one found value, and then search the copy list.
+def double_two(A):
+    my_max = max(A)
+    copy = list(A)
+    copy.remove(my_max)
+    return (my_max, max(copy))
+
+### This method tries to avoid making copies of the list. It finds the largest value.
+### It then saves that value in a variable.
+### It then deletes the value from the list, runs max and finds the 2nd largest value.
+### It returns the first highest back to the list.
+### And then returns the first and second largest values.
+
+def mutable_two (A):
+    idx = max(range(len(A)), key=A._getitem_)
+    my_max = A[idx]
+    del A[idx]
+
+    second = max(A)
+    A.insert(idx, my_max)
+    return (my_max, second)
+
 
 print(smallest(my_list))
 print(largest(my_list))
