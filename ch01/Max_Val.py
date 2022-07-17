@@ -58,7 +58,7 @@ def alternate(A):
 
 ### This is amazingly compact, uses power of sorting and tuples to quickly pluck out the two largest.
 def sorting_two(A):
-    return tuple(sorted(A, reverse=True) [:2])/
+    return tuple(sorted(A, reverse=True) [:2])
 
 ### This method uses max() to get the largest value, then it makes a copy of the list
 ### and then removes the previous largest value from the 2nd list. 
