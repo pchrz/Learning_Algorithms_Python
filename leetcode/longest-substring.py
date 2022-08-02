@@ -11,7 +11,8 @@ s = "abcabcbb"
 #s = "p"
 
 def lengthOfLongestSubstring(s: str):
-    
+    ### First Attempt ###
+    #####################
     ### Address corner case of empty string.
     if len(s) == 0:
         return 0
@@ -23,8 +24,13 @@ def lengthOfLongestSubstring(s: str):
     ### discovered substring longest_substring, if greater than assign a new greatest value. 
     longest_substring = s[0]
     current_substrings = set(longest_substring)
+    #print(longest_substring)
+    #print(current_substrings)
 
     for character in s[1:]:
+        #print(character)
+        #print(longest_substring)
+        #print(current_substrings)
         next_substrings = set(character)
         for substring in current_substrings: 
             if character not in substring:
@@ -43,5 +49,41 @@ def lengthOfLongestSubstring(s: str):
     ### That said I do appreciate Python here, and how readable it is. It's tools like X not in Y. 
     ### Overall the language is supremely understandable when doing complex tasks like these. 
 
-print(lengthOfLongestSubstring(s))
+#print(lengthOfLongestSubstring(s))
 
+def sliding_window(s: str):
+    ### Second Attempt ###
+    ######################
+    ### Using sliding window algorithm
+
+    ### Using this method we can cut down complexity to O(n)
+    print(s)
+    chSet = set()
+    ### Sliding window uses left pointer and a right pointer. Right pointer moves to the right to test values.
+    lp = 0
+    result = 0    
+
+    for rp in range(len(s)):
+        #print(rp)
+        #print(s[rp])
+        #print(chSet)
+        while s[rp] in chSet:
+            #print(rp)
+            #print(lp)
+            #print(chSet)
+            chSet.remove(s[lp])
+            lp += 1
+        chSet.add(s[rp])
+        #print(chSet)
+        #print(rp)
+        #print(lp)
+        result = max(result, rp - lp + 1)
+        print(result)
+    return result
+
+
+print(sliding_window(s))
+
+
+
+    
